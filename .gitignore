@@ -52,6 +52,10 @@ clients/*
 outreach/*
 !outreach/.gitkeep
 
+# --- Готовые письма с подставленными контактами отправителя ---
+# Содержат рабочий email, телефон и Telegram — только локально.
+outreach-ready/
+
 # --- Generated private working data ---
 source/processed/*
 !source/processed/.gitkeep
