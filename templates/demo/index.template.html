@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--
+  ШАБЛОН АВТОНОМНОГО ДЕМО — client-demo-factory
+
+  Плейсхолдеры для замены:
+    {{COMPANY_NAME}}      название компании клиента
+    {{DEMO_TITLE}}        заголовок демо
+    {{DEMO_DESCRIPTION}}  краткое описание сценария
+    {{PUBLIC_URL}}        итоговая публичная ссылка
+    {{CONTACT_URL}}       ссылка/контакт отправителя
+    {{SECURITY_NOTICE}}   признаки безопасности (только проверенные)
+
+  ПРАВИЛА:
+    - файл должен открываться с диска, без сервера и без сети;
+    - никаких <script src>, fetch, form action, внешних шрифтов;
+    - один законченный сценарий, остальное — в «В полной версии»;
+    - не выдумывать факты о компании.
+
+  Этот комментарий-инструкцию удалить при генерации демо.
+  После замены в файле не должно остаться ни одной открывающей
+  двойной фигурной скобки.
+-->
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="yandex" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>{{DEMO_TITLE}} — демонстрационная концепция</title>
+<style>
+  :root {
+    --bg: #f6f6f4;
+    --surface: #ffffff;
+    --text: #171715;
+    --muted: #6a6a64;
+    --line: #e4e4e0;
+    --accent: #2f5cff;
+    --accent-soft: #eef2ff;
+    --warn-bg: #fff8e6;
+    --warn-line: #f0dca8;
+    --warn-text: #6b5415;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121211;
+      --surface: #1b1b19;
+      --text: #ececea;
+      --muted: #9a9a93;
+      --line: #2d2d2a;
+      --accent: #7d9bff;
+      --accent-soft: #1e2440;
+      --warn-bg: #2a2314;
+      --warn-line: #4d4227;
+      --warn-text: #e5d09a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 64px; }
+  section { margin-top: 40px; }
+  h1 { font-size: 2rem; font-weight: 650; letter-spacing: -0.02em; margin: 0 0 12px; }
+  h2 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 14px; }
+  p  { margin: 0 0 12px; }
+  .lead { font-size: 1.05rem; color: var(--muted); }
+  .small { font-size: 0.8rem; color: var(--muted); }
+
+  /* --- демонстрационная плашка --- */
+  .demo-banner {
+    background: var(--warn-bg);
+    border-bottom: 1px solid var(--warn-line);
+    color: var(--warn-text);
+    font-size: 0.82rem;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; }
+  select, input[type="text"], input[type="range"] {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.95rem;
+  }
+  button {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 20px;
+    font: inherit;
+    font-weight: 550;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  button:hover { opacity: 0.9; }
+  button:focus-visible, select:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .result { background: var(--accent-soft); border: 1px solid var(--line); }
+  .result[hidden] { display: none; }
+  .row {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 8px 0; border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: 0; }
+  .row .k { color: var(--muted); font-size: 0.9rem; }
+  .row .v { font-weight: 550; text-align: right; }
+  ul { margin: 0; padding-left: 20px; }
+  li { margin-bottom: 7px; }
+  .tag {
+    display: inline-block; font-size: 0.7rem; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 99px;
+    padding: 2px 9px; margin-bottom: 12px;
+  }
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 56px; padding: 24px 20px 40px;
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    .wrap { padding: 0 16px 48px; }
+    .card { padding: 18px; }
+    .row { flex-direction: column; gap: 2px; }
+    .row .v { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ДЕМОНСТРАЦИОННАЯ ПЛАШКА ============ -->
+<div class="demo-banner">
+  Демонстрационная концепция для компании «{{COMPANY_NAME}}». Не является официальным сайтом компании.
+</div>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section>
+    <span class="tag">Демо-сценарий</span>
+    <h1>{{DEMO_TITLE}}</h1>
+    <p class="lead">{{DEMO_DESCRIPTION}}</p>
+  </section>
+
+  <!-- ============ ИНТЕРАКТИВНЫЙ БЛОК ============ -->
+  <section>
+    <h2>Попробуйте сценарий</h2>
+    <div class="card">
+      <div class="field">
+        <label for="opt-1">Параметр 1</label>
+        <select id="opt-1">
+          <option value="a">Вариант A</option>
+          <option value="b">Вариант B</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="opt-2">Параметр 2</label>
+        <select id="opt-2">
+          <option value="x">Вариант X</option>
+          <option value="y">Вариант Y</option>
+        </select>
+      </div>
+      <button id="run" type="button">Показать результат</button>
+    </div>
+  </section>
+
+  <!-- ============ РЕЗУЛЬТАТ ============ -->
+  <section id="result-section" hidden>
+    <h2>Результат</h2>
+    <div class="card result">
+      <div id="result-body"></div>
+      <p class="small" style="margin-top:14px;">
+        Демонстрационные данные. Предварительный расчет, не оферта.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ КАРТОЧКА ЗАЯВКИ ============ -->
+  <section id="lead-section" hidden>
+    <h2>Как это выглядит для клиента</h2>
+    <div class="card">
+      <div id="lead-body"></div>
+      <p class="small" style="margin-top:14px;">
+        Это демонстрация. Введенные данные никуда не отправляются и остаются в вашем браузере.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ЧТО ПОЛУЧАЕТ МЕНЕДЖЕР ============ -->
+  <section>
+    <h2>Что получает менеджер</h2>
+    <div class="card">
+      <ul>
+        <li>Структурированную заявку с параметрами, а не «здравствуйте, сколько стоит».</li>
+        <li>Понимание запроса до первого звонка.</li>
+        <li>Предварительный расчет, с которого начинается разговор.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ В ПОЛНОЙ ВЕРСИИ ============ -->
+  <section>
+    <h2>В полной версии</h2>
+    <div class="card">
+      <ul>
+        <li>Передача заявки в вашу систему учета.</li>
+        <li>Уведомления менеджеру.</li>
+        <li>Расширенная логика расчета под ваш прайс.</li>
+        <li>Аналитика по обращениям.</li>
+      </ul>
+      <p class="small" style="margin-top:12px;">
+        Состав работ и сроки обсуждаются отдельно.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section>
+    <h2>Обсудить</h2>
+    <div class="card">
+      <p>Если сценарий выглядит применимо — можно обсудить, как он лег бы на ваши процессы.</p>
+      <p style="margin:0;"><a href="{{CONTACT_URL}}">Связаться</a></p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ БЕЗОПАСНЫЙ ФУТЕР ============ -->
+<footer>
+  <p class="small" style="margin-bottom:6px;">
+    Персональная демонстрационная концепция. Не является официальным сайтом компании «{{COMPANY_NAME}}».
+  </p>
+  <p class="small" style="margin-bottom:6px;">{{SECURITY_NOTICE}}</p>
+  <p class="small" style="margin:0;">{{PUBLIC_URL}}</p>
+</footer>
+
+<script>
+/* Автономная логика. Без сети, без API, без отправки данных. */
+(function () {
+  "use strict";
+
+  var runBtn = document.getElementById("run");
+  var resultSection = document.getElementById("result-section");
+  var resultBody = document.getElementById("result-body");
+  var leadSection = document.getElementById("lead-section");
+  var leadBody = document.getElementById("lead-body");
+
+  function row(k, v) {
+    return '<div class="row"><span class="k">' + k + '</span>' +
+           '<span class="v">' + v + '</span></div>';
+  }
+
+  function labelOf(id) {
+    var el = document.getElementById(id);
+    return el.options[el.selectedIndex].text;
+  }
+
+  runBtn.addEventListener("click", function () {
+    var p1 = labelOf("opt-1");
+    var p2 = labelOf("opt-2");
+
+    resultBody.innerHTML = row("Параметр 1", p1) + row("Параметр 2", p2);
+    resultSection.hidden = false;
+
+    leadBody.innerHTML =
+      row("Запрос", p1 + " / " + p2) +
+      row("Статус", "Новая заявка");
+    leadSection.hidden = false;
+
+    resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+})();
+</script>
+</body>
+</html>

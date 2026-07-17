@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="yandex" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>МДО · ИИ-менеджер продаж — демонстрационная концепция</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --line:#2a2f3a;
+    --txt:#eceef2; --mut:#9aa3b2; --accent:#c8a35b; --accent2:#e0be74;
+    --b2c:#4a90d9; --b2b:#c8a35b; --ok:#3ecf8e; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,#0f1115,#12151c);color:var(--txt);min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;padding:16px}
+  .wrap{width:100%;max-width:520px}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin-bottom:10px}
+  header h1{font-size:20px;margin:2px 0 2px}
+  header p{color:var(--mut);font-size:13px;margin:0 0 14px}
+  .app{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.35)}
+  .topbar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--panel2)}
+  .av{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent2),var(--accent));
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:#20242c;font-size:14px}
+  .topbar b{font-size:14px}.topbar span{font-size:11px;color:var(--mut);display:block}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:5px}
+  .chat{padding:14px;height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+  .msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.45;animation:pop .25s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .bot{background:var(--panel2);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+  .user{background:linear-gradient(135deg,var(--accent),#b8934d);color:#1a1d24;align-self:flex-end;
+    border-bottom-right-radius:4px;font-weight:500}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;padding:4px 14px 14px}
+  .opt{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:9px 13px;border-radius:12px;
+    font-size:13px;cursor:pointer;transition:.15s}
+  .opt:hover{border-color:var(--accent);background:#252a34}
+  .opt:active{transform:scale(.97)}
+  .field{display:flex;gap:8px;padding:4px 14px 14px}
+  .field input{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--txt);
+    padding:11px 13px;font-size:14px;outline:none}
+  .field input:focus{border-color:var(--accent)}
+  .field button{background:var(--accent);border:none;color:#1a1d24;font-weight:700;border-radius:12px;padding:0 16px;cursor:pointer;font-size:14px}
+  .typing{display:flex;gap:4px;padding:12px 14px}
+  .typing i{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:bl 1s infinite}
+  .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes bl{0%,60%,100%{opacity:.3}30%{opacity:1}}
+  .card{background:linear-gradient(160deg,#1e222b,#171a21);border:1px solid var(--accent);border-radius:14px;
+    padding:16px;margin:2px 14px 14px;animation:pop .3s ease}
+  .card h3{margin:0 0 4px;font-size:15px;color:var(--accent2)}
+  .card .sub{font-size:11px;color:var(--mut);margin-bottom:12px}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+  .row:last-of-type{border-bottom:none}
+  .row span{color:var(--mut)}.row b{text-align:right}
+  .price{margin-top:12px;padding:12px;background:#20242c;border-radius:10px;text-align:center}
+  .price .big{font-size:22px;font-weight:800;color:var(--accent2)}
+  .price small{display:block;color:var(--mut);font-size:10.5px;margin-top:4px}
+  .disc{font-size:10.5px;color:var(--mut);margin:10px 14px;line-height:1.4}
+  .full{margin:14px;padding:14px;border:1px dashed var(--line);border-radius:12px;background:#14171d}
+  .full h4{margin:0 0 8px;font-size:13px;color:var(--accent2)}
+  .full ul{margin:0;padding-left:18px;color:var(--mut);font-size:12.5px;line-height:1.7}
+  .foot{text-align:center;font-size:11px;color:var(--mut);margin:14px 0;line-height:1.5}
+  .restart{background:none;border:1px solid var(--line);color:var(--mut);border-radius:10px;padding:8px 14px;
+    font-size:12px;cursor:pointer;margin:0 auto;display:block}
+  .restart:hover{border-color:var(--accent);color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Персональная демонстрационная концепция</span>
+  <header>
+    <h1>МДО · ИИ-менеджер продаж</h1>
+    <p>Новосибирск · мебель на заказ для дома и бизнеса</p>
+  </header>
+
+  <div class="app">
+    <div class="topbar">
+      <div class="av">МДО</div>
+      <div>
+        <b>Онлайн-менеджер</b>
+        <span><span class="status-dot"></span>отвечает за секунды · демо</span>
+      </div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div id="controls"></div>
+  </div>
+
+  <div class="disc">Все числа в этом демо — <b>демонстрационные данные</b>. Показанный ориентир стоимости —
+  предварительный расчёт, не оферта. Пример стоимости кухни (от 1&nbsp;100&nbsp;000&nbsp;₽) взят с официального сайта mdo54.ru.</div>
+
+  <p class="foot">Персональная демонстрационная концепция. Не является официальным сайтом компании.</p>
+  <p class="foot">Страница не требует авторизации, не запрашивает пароль или оплату и не предлагает скачивать файлы. Введенные сведения не передаются и не сохраняются.</p>
+</div>
+
+<script>
+const chat=document.getElementById('chat');
+const controls=document.getElementById('controls');
+const state={track:null,answers:{}};
+
+function scroll(){chat.scrollTop=chat.scrollHeight;}
+function bubble(text,who){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=text;chat.appendChild(d);scroll();}
+function clearControls(){controls.innerHTML='';}
+
+function typing(cb){
+  const t=document.createElement('div');t.className='msg bot typing';
+  t.innerHTML='<i></i><i></i><i></i>';chat.appendChild(t);scroll();
+  setTimeout(()=>{t.remove();cb();},650);
+}
+function botSay(text,cb){typing(()=>{bubble(text,'bot');if(cb)cb();});}
+
+function options(list){
+  clearControls();
+  const box=document.createElement('div');box.className='opts';
+  list.forEach(o=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=o.label;
+    b.onclick=()=>{bubble(o.label,'user');clearControls();o.next();};
+    box.appendChild(b);
+  });
+  controls.appendChild(box);
+}
+function textInput(placeholder,cb){
+  clearControls();
+  const box=document.createElement('div');box.className='field';
+  const inp=document.createElement('input');inp.placeholder=placeholder;
+  const btn=document.createElement('button');btn.textContent='→';
+  function submit(){const v=inp.value.trim();if(!v)return;bubble(v,'user');clearControls();cb(v);}
+  btn.onclick=submit;inp.addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
+  box.appendChild(inp);box.appendChild(btn);controls.appendChild(box);inp.focus();
+}
+
+// ---- flow ----
+function start(){
+  chat.innerHTML='';state.track=null;state.answers={};
+  botSay('Здравствуйте! Я помогу быстро подобрать решение и подготовить предварительный расчёт. Подскажите — вы выбираете мебель для дома или для бизнеса?',()=>{
+    options([
+      {label:'🏠 Для дома',next:()=>{state.track='b2c';askRoomB2C();}},
+      {label:'🏢 Для бизнеса / объекта',next:()=>{state.track='b2b';askTypeB2B();}}
+    ]);
+  });
+}
+
+// ===== B2C =====
+function askRoomB2C(){
+  botSay('Отлично, оформим как частный заказ. Какое помещение обставляем?',()=>{
+    options([
+      {label:'Кухня',next:()=>{state.answers.item='Кухня';askStyleB2C();}},
+      {label:'Шкаф / гардеробная',next:()=>{state.answers.item='Шкаф / гардеробная';askStyleB2C();}},
+      {label:'Детская / прочее',next:()=>{state.answers.item='Детская / прочее';askStyleB2C();}}
+    ]);
+  });
+}
+function askStyleB2C(){
+  botSay('Какой стиль вам ближе?',()=>{
+    options([
+      {label:'Современный / минимализм',next:()=>{state.answers.style='Современный';askBudgetB2C();}},
+      {label:'Классика',next:()=>{state.answers.style='Классика';askBudgetB2C();}},
+      {label:'Пока не определился',next:()=>{state.answers.style='Уточняется';askBudgetB2C();}}
+    ]);
+  });
+}
+function askBudgetB2C(){
+  botSay('Есть ли ориентир по бюджету? Это поможет подобрать материалы, ничего не навязывая.',()=>{
+    options([
+      {label:'до 300 000 ₽',next:()=>{state.answers.budget='до 300 000 ₽';state.est=[250000,320000];askCityContact();}},
+      {label:'300–700 000 ₽',next:()=>{state.answers.budget='300–700 000 ₽';state.est=[450000,700000];askCityContact();}},
+      {label:'от 700 000 ₽',next:()=>{state.answers.budget='от 700 000 ₽';state.est=[900000,1300000];askCityContact();}},
+      {label:'Подскажите сами',next:()=>{state.answers.budget='По подбору менеджера';state.est=[350000,600000];askCityContact();}}
+    ]);
+  });
+}
+
+// ===== B2B =====
+function askTypeB2B(){
+  botSay('Понял, это коммерческий проект. Что за объект?',()=>{
+    options([
+      {label:'Офис',next:()=>{state.answers.item='Офисная мебель';askQtyB2B();}},
+      {label:'Торговое помещение',next:()=>{state.answers.item='Торговая мебель';askQtyB2B();}},
+      {label:'HoReCa / другое',next:()=>{state.answers.item='HoReCa / другое';askQtyB2B();}}
+    ]);
+  });
+}
+function askQtyB2B(){
+  botSay('Примерный объём проекта?',()=>{
+    options([
+      {label:'Одно помещение',next:()=>{state.answers.scope='Одно помещение';state.est=[400000,800000];askDeadlineB2B();}},
+      {label:'Несколько помещений',next:()=>{state.answers.scope='Несколько помещений';state.est=[900000,1800000];askDeadlineB2B();}},
+      {label:'Сеть / серийный заказ',next:()=>{state.answers.scope='Серийный заказ';state.est=[1500000,3500000];askDeadlineB2B();}}
+    ]);
+  });
+}
+function askDeadlineB2B(){
+  botSay('Есть ли срок, к которому нужно завершить?',()=>{
+    options([
+      {label:'Срочно (до месяца)',next:()=>{state.answers.deadline='До месяца';askCityContact();}},
+      {label:'1–3 месяца',next:()=>{state.answers.deadline='1–3 месяца';askCityContact();}},
+      {label:'Гибкий срок',next:()=>{state.answers.deadline='Гибкий';askCityContact();}}
+    ]);
+  });
+}
+
+// ===== common tail =====
+function askCityContact(){
+  botSay('Из какого вы города? (демо, данные никуда не отправляются)',()=>{
+    textInput('Например: Новосибирск',v=>{
+      state.answers.city=v;
+      botSay('Как к вам обращаться и удобный способ связи — телефон или мессенджер?',()=>{
+        textInput('Имя и контакт',v2=>{
+          state.answers.contact=v2;
+          botSay('Спасибо! Собрал заявку и подготовил предварительный ориентир. Менеджер подтвердит точную стоимость после уточнения деталей.',()=>{
+            renderCard();
+          });
+        });
+      });
+    });
+  });
+}
+
+function fmt(n){return n.toLocaleString('ru-RU')+' ₽';}
+function renderCard(){
+  clearControls();
+  const a=state.answers;const isB2C=state.track==='b2c';
+  const rows=[];
+  rows.push(['Тип заказа',isB2C?'Частный (B2C)':'Коммерческий (B2B)']);
+  rows.push(['Направление',a.item||'—']);
+  if(isB2C){rows.push(['Стиль',a.style||'—']);rows.push(['Бюджет-ориентир',a.budget||'—']);}
+  else{rows.push(['Объём',a.scope||'—']);rows.push(['Срок',a.deadline||'—']);}
+  rows.push(['Город',a.city||'—']);
+  rows.push(['Контакт',a.contact||'—']);
+
+  const card=document.createElement('div');card.className='card';
+  card.innerHTML='<h3>Карточка заявки № DEMO-'+Math.floor(1000+Math.random()*9000)+'</h3>'+
+    '<div class="sub">Готова к передаче менеджеру · маршрут: '+(isB2C?'частные заказы':'отдел B2B-проектов')+'</div>'+
+    rows.map(r=>'<div class="row"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('')+
+    '<div class="price"><div class="big">≈ '+fmt(state.est[0])+' — '+fmt(state.est[1])+'</div>'+
+    '<small>Предварительный расчёт, не оферта. Демонстрационные данные.</small></div>';
+  chat.appendChild(card);
+
+  const full=document.createElement('div');full.className='full';
+  full.innerHTML='<h4>В полной версии</h4><ul>'+
+    '<li>Автоматическая передача карточки в CRM и мессенджер менеджера</li>'+
+    '<li>Мини-конфигуратор мебели: помещение → стиль → бюджет с визуализацией</li>'+
+    '<li>Прикрепление фото и планировки прямо в диалоге</li>'+
+    '<li>Автоматические напоминания и повторные касания клиенту</li>'+
+    '<li>Ежедневная сводка новых заявок собственнику</li></ul>';
+  chat.appendChild(full);
+
+  const rb=document.createElement('button');rb.className='restart';rb.textContent='↻ Пройти сценарий заново';
+  rb.onclick=start;controls.appendChild(rb);
+  scroll();
+}
+
+start();
+</script>
+</body>
+</html>

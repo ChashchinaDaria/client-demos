@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="yandex" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Металлические Системы · Бриф и запрос на КП — демо</title>
+<style>
+  :root{
+    --bg:#0d1017; --panel:#151a22; --panel2:#1c222c; --line:#2b3340;
+    --txt:#e9edf3; --mut:#94a0b0; --accent:#3fa7ff; --accent2:#7cc4ff; --ok:#37d19a;
+    --steel:#5a6b7d; --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:linear-gradient(160deg,#0d1017,#0f141c);color:var(--txt);min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;padding:16px}
+  .wrap{width:100%;max-width:560px}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin-bottom:10px}
+  h1{font-size:20px;margin:2px 0}
+  .lead{color:var(--mut);font-size:13px;margin:0 0 16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+  .head{padding:14px 16px;border-bottom:1px solid var(--line);background:var(--panel2);display:flex;
+    align-items:center;justify-content:space-between}
+  .head b{font-size:14px}.head .step{font-size:11px;color:var(--mut)}
+  .prog{height:4px;background:var(--panel2)}
+  .prog i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:.4s}
+  .body{padding:18px 16px;min-height:300px}
+  .q{font-size:16px;font-weight:600;margin:0 0 4px}
+  .hint{font-size:12.5px;color:var(--mut);margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tile{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 12px;
+    cursor:pointer;transition:.15s;text-align:center;font-size:13.5px}
+  .tile .ic{font-size:24px;display:block;margin-bottom:6px}
+  .tile:hover{border-color:var(--accent);background:#222a35}
+  .tile.sel{border-color:var(--accent);box-shadow:0 0 0 2px rgba(63,167,255,.25)}
+  .full-w{grid-column:1/-1}
+  input,select{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;
+    color:var(--txt);padding:12px 13px;font-size:14px;outline:none;margin-bottom:10px}
+  input:focus,select:focus{border-color:var(--accent)}
+  label{display:block;font-size:12px;color:var(--mut);margin:2px 0 5px}
+  .nav{display:flex;gap:10px;margin-top:8px}
+  .btn{flex:1;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer}
+  .btn.prim{background:var(--accent);color:#08121c}
+  .btn.prim:disabled{opacity:.4;cursor:not-allowed}
+  .btn.ghost{flex:0 0 auto;background:transparent;border:1px solid var(--line);color:var(--mut);padding:13px 16px}
+  .btn.ghost:hover{color:var(--txt);border-color:var(--accent)}
+  .result{animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .rhead{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .rhead .ok{width:34px;height:34px;border-radius:50%;background:rgba(55,209,154,.15);color:var(--ok);
+    display:flex;align-items:center;justify-content:center;font-size:18px}
+  .rhead b{font-size:15px}.rhead span{font-size:11.5px;color:var(--mut);display:block}
+  .route{background:#0f2029;border:1px solid rgba(63,167,255,.35);border-radius:12px;padding:11px 13px;
+    font-size:13px;margin-bottom:12px}
+  .route b{color:var(--accent2)}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+  .row:last-child{border-bottom:none}.row span{color:var(--mut)}.row b{text-align:right}
+  .full{margin-top:16px;padding:14px;border:1px dashed var(--line);border-radius:12px;background:#12171f}
+  .full h4{margin:0 0 8px;font-size:13px;color:var(--accent2)}
+  .full ul{margin:0;padding-left:18px;color:var(--mut);font-size:12.5px;line-height:1.7}
+  .disc{font-size:10.5px;color:var(--mut);margin:12px 2px;line-height:1.5}
+  .foot{text-align:center;font-size:11px;color:var(--mut);margin:14px 0}
+  .restart{background:none;border:1px solid var(--line);color:var(--mut);border-radius:10px;padding:9px 14px;
+    font-size:12.5px;cursor:pointer;width:100%;margin-top:10px}
+  .restart:hover{border-color:var(--accent);color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Персональная демонстрационная концепция</span>
+  <h1>Металлические Системы · Бриф на КП</h1>
+  <p class="lead">Москва и область · навесы, ворота, гаражи, павильоны, сваи</p>
+
+  <div class="card">
+    <div class="head"><b>Заявка на расчёт</b><span class="step" id="stepLabel">Шаг 1 из 4</span></div>
+    <div class="prog"><i id="bar"></i></div>
+    <div class="body" id="body"></div>
+  </div>
+
+  <div class="disc">Демонстрационная концепция. Ориентиры стоимости и сроков — <b>демонстрационные данные,
+  предварительный расчёт, не оферта</b>. Данные из формы никуда не отправляются.</div>
+  <p class="foot">Персональная демонстрационная концепция. Не является официальным сайтом компании.</p>
+  <p class="foot">Страница не требует авторизации, не запрашивает пароль или оплату и не предлагает скачивать файлы. Введенные сведения не передаются и не сохраняются.</p>
+</div>
+
+<script>
+const products={
+  naves:{name:'Навес',ic:'🏗️',base:[90000,260000],unit:'проект'},
+  vorota:{name:'Ворота',ic:'🚪',base:[60000,180000],unit:'комплект'},
+  garazh:{name:'Гараж / бокс',ic:'🏠',base:[180000,520000],unit:'конструкция'},
+  pavilon:{name:'Павильон',ic:'🏢',base:[220000,650000],unit:'объект'},
+  svai:{name:'Сваи',ic:'🔩',base:[40000,160000],unit:'партия'}
+};
+const state={step:0,product:null,client:null,size:'',region:'',deadline:'',contact:''};
+const body=document.getElementById('body');
+const bar=document.getElementById('bar');
+const stepLabel=document.getElementById('stepLabel');
+const TOTAL=4;
+
+function setProg(){bar.style.width=(state.step/TOTAL*100)+'%';stepLabel.textContent='Шаг '+Math.min(state.step+1,TOTAL)+' из '+TOTAL;}
+
+function render(){
+  setProg();
+  if(state.step===0)return renderProduct();
+  if(state.step===1)return renderClient();
+  if(state.step===2)return renderDetails();
+  if(state.step===3)return renderContact();
+  return renderResult();
+}
+
+function renderProduct(){
+  body.innerHTML='<p class="q">Что нужно изготовить?</p><p class="hint">Определим продукт — заявка уйдёт нужному направлению.</p>'+
+    '<div class="grid" id="tiles"></div>';
+  const t=document.getElementById('tiles');
+  Object.keys(products).forEach(k=>{
+    const p=products[k];const d=document.createElement('div');
+    d.className='tile'+(state.product===k?' sel':'');
+    d.innerHTML='<span class="ic">'+p.ic+'</span>'+p.name;
+    d.onclick=()=>{state.product=k;state.step=1;render();};
+    t.appendChild(d);
+  });
+}
+function renderClient(){
+  body.innerHTML='<p class="q">Кто оформляет заявку?</p><p class="hint">Частный заказ и проект компании ведём по-разному.</p>'+
+    '<div class="grid">'+
+    '<div class="tile'+(state.client==='b2c'?' sel':'')+'" data-c="b2c"><span class="ic">👤</span>Частное лицо</div>'+
+    '<div class="tile'+(state.client==='b2b'?' sel':'')+'" data-c="b2b"><span class="ic">🏢</span>Компания / объект</div>'+
+    '</div>'+navHtml(true);
+  body.querySelectorAll('.tile').forEach(t=>t.onclick=()=>{state.client=t.dataset.c;state.step=2;render();});
+  wireNav();
+}
+function renderDetails(){
+  const p=products[state.product];
+  body.innerHTML='<p class="q">Параметры объекта</p><p class="hint">'+p.name+' · заполните известное, остальное уточнит менеджер.</p>'+
+    '<label>Размер / объём (например: 6×4 м, 2 шт.)</label><input id="size" value="'+state.size+'" placeholder="Свободно, как удобно">'+
+    '<label>Район / адрес объекта</label><input id="region" value="'+state.region+'" placeholder="Москва или город в области">'+
+    '<label>Желаемый срок</label>'+
+    '<select id="deadline">'+
+      opt('','— выберите —')+opt('Срочно (до 2 недель)','Срочно (до 2 недель)')+
+      opt('1 месяц','1 месяц')+opt('1–3 месяца','1–3 месяца')+opt('Гибкий','Гибкий')+
+    '</select>'+navHtml(true);
+  const dl=document.getElementById('deadline');dl.value=state.deadline;
+  wireNav(()=>{
+    state.size=document.getElementById('size').value.trim();
+    state.region=document.getElementById('region').value.trim();
+    state.deadline=document.getElementById('deadline').value;
+  });
+}
+function renderContact(){
+  body.innerHTML='<p class="q">Куда прислать расчёт?</p><p class="hint">Демо: данные не отправляются, всё считается локально.</p>'+
+    '<label>Имя и телефон или мессенджер</label><input id="contact" value="'+state.contact+'" placeholder="Как с вами связаться">'+
+    navHtml(true,'Сформировать заявку и КП');
+  wireNav(()=>{state.contact=document.getElementById('contact').value.trim();},()=>state.contact!=='',true);
+  const c=document.getElementById('contact');
+  const btn=body.querySelector('.btn.prim');
+  const check=()=>{btn.disabled=c.value.trim()==='';};c.oninput=check;check();
+}
+function renderResult(){
+  const p=products[state.product];
+  const isB2B=state.client==='b2b';
+  const mult=isB2B?1.4:1;
+  const lo=Math.round(p.base[0]*mult/1000)*1000, hi=Math.round(p.base[1]*mult/1000)*1000;
+  const route=isB2B?'Отдел проектных заявок (B2B)':'Менеджер частных заказов';
+  const num='МС-'+Math.floor(1000+Math.random()*9000);
+  body.innerHTML='<div class="result">'+
+    '<div class="rhead"><div class="ok">✓</div><div><b>Заявка № '+num+' сформирована</b>'+
+    '<span>Готова к передаче · демонстрационная карточка</span></div></div>'+
+    '<div class="route">Маршрут: <b>'+route+'</b> · продукт «'+p.name+'»</div>'+
+    row('Продукт',p.name)+
+    row('Тип клиента',isB2B?'Компания / объект (B2B)':'Частное лицо (B2C)')+
+    row('Размер / объём',state.size||'уточняется')+
+    row('Район объекта',state.region||'уточняется')+
+    row('Срок',state.deadline||'уточняется')+
+    row('Контакт',state.contact||'—')+
+    '<div class="route" style="margin-top:12px;text-align:center">Предварительный ориентир: <b>'+
+      fmt(lo)+' — '+fmt(hi)+'</b><br><span style="font-size:10.5px;color:var(--mut)">Демонстрационные данные, не оферта</span></div>'+
+    '<div class="full"><h4>В полной версии</h4><ul>'+
+      '<li>Автоматическая маршрутизация заявки нужной точке продаж или менеджеру</li>'+
+      '<li>Панель собственника: заявки по продуктам, регионам и просроченным ответам</li>'+
+      '<li>Точный расчёт по размерам и материалу, а не диапазон</li>'+
+      '<li>Прикрепление чертежей и фото участка в заявке</li>'+
+      '<li>Автонапоминания менеджеру по заявкам без ответа</li>'+
+    '</ul></div>'+
+    '<button class="restart" id="rs">↻ Оформить новую заявку</button>'+
+    '</div>';
+  document.getElementById('rs').onclick=()=>{
+    Object.assign(state,{step:0,product:null,client:null,size:'',region:'',deadline:'',contact:''});render();
+  };
+}
+
+// helpers
+function opt(v,l){return '<option value="'+v+'">'+l+'</option>';}
+function row(k,v){return '<div class="row"><span>'+k+'</span><b>'+v+'</b></div>';}
+function fmt(n){return n.toLocaleString('ru-RU')+' ₽';}
+function navHtml(back,primLabel){
+  return '<div class="nav">'+(back?'<button class="btn ghost" id="back">Назад</button>':'')+
+    '<button class="btn prim" id="next">'+(primLabel||'Далее')+'</button></div>';
+}
+function wireNav(saveFn,validFn,isLast){
+  const next=document.getElementById('next');const back=document.getElementById('back');
+  if(back)back.onclick=()=>{state.step--;render();};
+  if(next)next.onclick=()=>{if(saveFn)saveFn();if(validFn&&!validFn())return;state.step++;render();};
+}
+
+render();
+</script>
+</body>
+</html>

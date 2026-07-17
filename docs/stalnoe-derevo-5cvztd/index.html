@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="yandex" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Стальное Дерево · ИИ-администратор — демо</title>
+<style>
+  :root{
+    --bg:#0e120f; --panel:#151b16; --panel2:#1d251e; --line:#2c352d;
+    --txt:#eaf0ea; --mut:#98a89b; --accent:#4caf7d; --accent2:#6fd39d; --wood:#b5824a; --ok:#5fd39a;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:linear-gradient(160deg,#0e120f,#101610);color:var(--txt);min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;padding:16px}
+  .wrap{width:100%;max-width:520px}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin-bottom:10px}
+  h1{font-size:20px;margin:2px 0}
+  .lead{color:var(--mut);font-size:13px;margin:0 0 14px}
+  .app{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .topbar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--panel2)}
+  .av{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--wood));
+    display:flex;align-items:center;justify-content:center;font-size:18px}
+  .topbar b{font-size:14px}.topbar span{font-size:11px;color:var(--mut);display:block}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:5px}
+  .chat{padding:14px;height:430px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+  .msg{max-width:86%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.45;animation:pop .25s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .bot{background:var(--panel2);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+  .user{background:linear-gradient(135deg,var(--accent),#3c9268);color:#07130d;align-self:flex-end;
+    border-bottom-right-radius:4px;font-weight:500}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;padding:4px 14px 14px}
+  .opt{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:9px 13px;border-radius:12px;
+    font-size:13px;cursor:pointer;transition:.15s}
+  .opt:hover{border-color:var(--accent);background:#243026}
+  .opt:active{transform:scale(.97)}
+  .field{display:flex;gap:8px;padding:4px 14px 14px}
+  .field input{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--txt);
+    padding:11px 13px;font-size:14px;outline:none}
+  .field input:focus{border-color:var(--accent)}
+  .field button{background:var(--accent);border:none;color:#07130d;font-weight:700;border-radius:12px;padding:0 16px;cursor:pointer;font-size:16px}
+  .typing{display:flex;gap:4px;padding:12px 14px}
+  .typing i{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:bl 1s infinite}
+  .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes bl{0%,60%,100%{opacity:.3}30%{opacity:1}}
+  .card{background:linear-gradient(160deg,#1d251e,#151b16);border:1px solid var(--accent);border-radius:14px;
+    padding:16px;margin:2px 14px 14px;animation:pop .3s ease}
+  .card h3{margin:0 0 2px;font-size:15px;color:var(--accent2)}
+  .card .sub{font-size:11px;color:var(--mut);margin-bottom:12px}
+  .qual{display:inline-block;font-size:11px;padding:3px 9px;border-radius:999px;margin-bottom:10px;font-weight:600}
+  .qual.hot{background:rgba(181,130,74,.2);color:var(--wood)}
+  .qual.warm{background:rgba(95,211,154,.15);color:var(--ok)}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+  .row:last-of-type{border-bottom:none}.row span{color:var(--mut)}.row b{text-align:right}
+  .full{margin:14px;padding:14px;border:1px dashed var(--line);border-radius:12px;background:#12180f}
+  .full h4{margin:0 0 8px;font-size:13px;color:var(--accent2)}
+  .full ul{margin:0;padding-left:18px;color:var(--mut);font-size:12.5px;line-height:1.7}
+  .disc{font-size:10.5px;color:var(--mut);margin:12px 2px;line-height:1.5}
+  .foot{text-align:center;font-size:11px;color:var(--mut);margin:14px 0}
+  .restart{background:none;border:1px solid var(--line);color:var(--mut);border-radius:10px;padding:8px 14px;
+    font-size:12px;cursor:pointer;margin:0 auto;display:block}
+  .restart:hover{border-color:var(--accent);color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">Персональная демонстрационная концепция</span>
+  <h1>Стальное Дерево · ИИ-администратор</h1>
+  <p class="lead">Краснодар · металлоконструкции и деревообработка</p>
+
+  <div class="app">
+    <div class="topbar">
+      <div class="av">🌲</div>
+      <div>
+        <b>ИИ-администратор</b>
+        <span><span class="dot"></span>принимает заявки по всем направлениям · демо</span>
+      </div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div id="controls"></div>
+  </div>
+
+  <div class="disc">Демонстрационная концепция. Показатели «более 10 лет опыта» и «более 500 проектов» —
+  заявления с официального сайта steel-tree.ru. Любые расчётные цифры — <b>демонстрационные, не оферта</b>.
+  Данные из диалога никуда не отправляются.</div>
+  <p class="foot">Персональная демонстрационная концепция. Не является официальным сайтом компании.</p>
+  <p class="foot">Страница не требует авторизации, не запрашивает пароль или оплату и не предлагает скачивать файлы. Введенные сведения не передаются и не сохраняются.</p>
+</div>
+
+<script>
+const chat=document.getElementById('chat');
+const controls=document.getElementById('controls');
+const state={answers:{}};
+function scroll(){chat.scrollTop=chat.scrollHeight;}
+function bubble(t,who){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=t;chat.appendChild(d);scroll();}
+function clearC(){controls.innerHTML='';}
+function typing(cb){const t=document.createElement('div');t.className='msg bot typing';t.innerHTML='<i></i><i></i><i></i>';
+  chat.appendChild(t);scroll();setTimeout(()=>{t.remove();cb();},650);}
+function botSay(t,cb){typing(()=>{bubble(t,'bot');if(cb)cb();});}
+function options(list){clearC();const box=document.createElement('div');box.className='opts';
+  list.forEach(o=>{const b=document.createElement('button');b.className='opt';b.textContent=o.label;
+    b.onclick=()=>{bubble(o.label,'user');clearC();o.next();};box.appendChild(b);});controls.appendChild(box);}
+function textInput(ph,cb){clearC();const box=document.createElement('div');box.className='field';
+  const inp=document.createElement('input');inp.placeholder=ph;const btn=document.createElement('button');btn.textContent='→';
+  function submit(){const v=inp.value.trim();if(!v)return;bubble(v,'user');clearC();cb(v);}
+  btn.onclick=submit;inp.addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
+  box.appendChild(inp);box.appendChild(btn);controls.appendChild(box);inp.focus();}
+
+const dirs={
+  vorota:'Ворота',ograzhdenie:'Ограждения / забор',naves:'Навес',
+  rezka:'Плазменная резка',derevo:'Деревообработка'
+};
+
+function start(){
+  chat.innerHTML='';state.answers={};clearC();
+  botSay('Здравствуйте! Я администратор «Стального Дерева». Помогу быстро оформить заявку по любому направлению и передам её мастеру уже готовой. С чем пришли?',()=>{
+    options([
+      {label:'Ворота',next:()=>pickDir('vorota')},
+      {label:'Ограждения / забор',next:()=>pickDir('ograzhdenie')},
+      {label:'Навес',next:()=>pickDir('naves')},
+      {label:'Плазменная резка',next:()=>pickDir('rezka')},
+      {label:'Деревообработка',next:()=>pickDir('derevo')}
+    ]);
+  });
+}
+function pickDir(k){
+  state.answers.dir=dirs[k];state.answers.dirKey=k;
+  botSay('Принял: '+dirs[k].toLowerCase()+'. Это для дома/участка или для бизнеса/объекта?',()=>{
+    options([
+      {label:'Для дома / участка',next:()=>{state.answers.segment='Частный';askReady();}},
+      {label:'Для бизнеса / объекта',next:()=>{state.answers.segment='Бизнес';askReady();}}
+    ]);
+  });
+}
+function askReady(){
+  botSay('Насколько всё готово к старту?',()=>{
+    options([
+      {label:'Есть размеры / чертёж',next:()=>{state.answers.ready='Есть размеры/чертёж';state.hot=true;askWhen();}},
+      {label:'Примерно представляю',next:()=>{state.answers.ready='Примерное представление';state.hot=true;askWhen();}},
+      {label:'Пока только присматриваюсь',next:()=>{state.answers.ready='Присматривается';state.hot=false;askWhen();}}
+    ]);
+  });
+}
+function askWhen(){
+  botSay('Когда планируете начать?',()=>{
+    options([
+      {label:'В этом месяце',next:()=>{state.answers.when='В этом месяце';if(!state.hot)state.hot=true;askContact();}},
+      {label:'1–2 месяца',next:()=>{state.answers.when='1–2 месяца';askContact();}},
+      {label:'Позже / изучаю',next:()=>{state.answers.when='Позже';askContact();}}
+    ]);
+  });
+}
+function askContact(){
+  botSay('Оставьте имя и удобный контакт — Telegram, WhatsApp, VK или телефон. Передам мастеру вашу заявку. (демо: данные не отправляются)',()=>{
+    textInput('Имя и контакт',v=>{
+      state.answers.contact=v;
+      botSay('Готово! Собрал карточку заявки и определил приоритет. В реальной системе она сразу уходит мастеру нужного направления.',()=>renderCard());
+    });
+  });
+}
+function renderCard(){
+  clearC();const a=state.answers;const hot=state.hot;
+  const num='СД-'+Math.floor(1000+Math.random()*9000);
+  const card=document.createElement('div');card.className='card';
+  card.innerHTML='<h3>Карточка заявки № '+num+'</h3>'+
+    '<div class="sub">Готова к передаче мастеру · демонстрационная</div>'+
+    '<span class="qual '+(hot?'hot':'warm')+'">'+(hot?'🔥 Горячая — ответить в первую очередь':'🌱 Тёплая — в очередь на прогрев')+'</span>'+
+    row('Направление',a.dir)+
+    row('Сегмент',a.segment)+
+    row('Готовность',a.ready)+
+    row('Сроки',a.when)+
+    row('Маршрут',a.segment==='Бизнес'?'Мастер проектных заказов':'Мастер частных заказов')+
+    row('Контакт',a.contact||'—');
+  chat.appendChild(card);
+  const full=document.createElement('div');full.className='full';
+  full.innerHTML='<h4>В полной версии</h4><ul>'+
+    '<li>Мгновенная передача карточки мастеру в Telegram / WhatsApp / VK</li>'+
+    '<li>Визуальный конфигуратор ворот или навеса с выбором типа и размеров</li>'+
+    '<li>Приём фото участка и чертежей прямо в диалоге</li>'+
+    '<li>Автоприоритизация: горячие заявки — в начало очереди</li>'+
+    '<li>Единая приёмка обращений со всех каналов и сайта</li>'+
+  '</ul>';
+  chat.appendChild(full);
+  const rb=document.createElement('button');rb.className='restart';rb.textContent='↻ Оформить ещё одну заявку';
+  rb.onclick=start;controls.appendChild(rb);scroll();
+}
+function row(k,v){return '<div class="row"><span>'+k+'</span><b>'+(v||'—')+'</b></div>';}
+start();
+</script>
+</body>
+</html>

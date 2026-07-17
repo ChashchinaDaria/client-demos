@@ -1,0 +1,22 @@
+{
+  "project_name": "client-demo-factory",
+  "github_username": "",
+  "repository_name": "client-demos",
+  "custom_domain": "",
+  "public_base_url": "",
+  "sender": {
+    "name": "",
+    "email": "",
+    "phone": "",
+    "telegram": "",
+    "website": ""
+  },
+  "defaults": {
+    "language": "ru",
+    "market": "Russia",
+    "first_batch_size": 3,
+    "manual_review_required": true,
+    "auto_send_messages": false,
+    "publish_after_validation": true
+  }
+}
