@@ -50,12 +50,17 @@ reports/screenshots/*
 clients/*
 !clients/.gitkeep
 clients-batch-02/
+clients-batch-03/
 outreach/*
 !outreach/.gitkeep
 
 # --- Готовые письма с подставленными контактами отправителя ---
 # Содержат рабочий email, телефон и Telegram — только локально.
 outreach-ready/
+assets-image-plan/
+
+# --- Batch 03 local drafts: publish only after user-provided images and approval ---
+docs/adexo-74rsb7/
 
 # --- Generated private working data ---
 source/processed/*
