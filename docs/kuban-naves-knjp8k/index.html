@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="yandex" content="noindex, nofollow, noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=">
+  <title>Кубань-Навес | персональная концепция Zephyro AI</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --surface: #f1f4f0; --surface-2: #dfe7e0; --ink: #17211c; --muted: #526158;
+      --accent: #24563f; --accent-soft: #c9ded2; --on-accent: #f8f7f5;
+      --line: color-mix(in srgb, var(--ink) 16%, transparent); --shadow: color-mix(in srgb, var(--accent) 18%, transparent);
+      --radius: 14px; --max: 1240px; --nav-h: 68px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --surface: #111914; --surface-2: #1c2821; --ink: #edf3ef; --muted: #b7c6bc; --accent: #83c6a2; --accent-soft: color-mix(in srgb, #83c6a2 18%, #1c2821); --on-accent: #111914; --line: color-mix(in srgb, var(--ink) 18%, transparent); --shadow: color-mix(in srgb, var(--accent) 18%, transparent); }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; overflow-x: hidden; background: var(--surface); color: var(--ink); font-family: "Segoe UI Variable", "Segoe UI", Arial, sans-serif; font-size: 16px; line-height: 1.55; }
+    button, input, a { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .skip { position: fixed; left: 12px; top: -80px; z-index: 20; background: var(--ink); color: var(--surface); padding: 12px 16px; border-radius: var(--radius); }
+    .skip:focus { top: 12px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .demo-notice { padding: 10px 20px; background: var(--accent-soft); color: var(--ink); border-bottom: 1px solid var(--line); text-align: center; font-size: .9rem; }
+    .demo-notice p { margin: 0 auto; max-width: 1100px; }
+    .demo-notice p + p { margin-top: 4px; }
+    .site-nav { position: sticky; top: 0; z-index: 10; min-height: var(--nav-h); border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(16px); }
+    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 20px; min-height: var(--nav-h); display: flex; align-items: center; gap: 24px; }
+    .brand { min-height: 44px; display: inline-flex; align-items: center; font-weight: 780; letter-spacing: -.02em; white-space: nowrap; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { min-height: 44px; padding: 11px 10px; border-radius: 9px; text-decoration: none; color: var(--muted); white-space: nowrap; font-size: .9rem; }
+    .nav-links a[aria-current="true"] { color: var(--ink); background: var(--accent-soft); }
+    main { display: block; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .hero { min-height: calc(100dvh - 150px); display: grid; grid-template-columns: minmax(0, .88fr) minmax(460px, 1.12fr); align-items: center; gap: clamp(28px, 5vw, 76px); padding-block: clamp(48px, 8vw, 88px); }
+    .hero-copy { max-width: 650px; }
+    .eyebrow { margin: 0 0 18px; color: var(--accent); font-weight: 720; font-size: .92rem; }
+    h1, h2, h3 { text-wrap: balance; }
+    h1 { margin: 0; font-size: clamp(2.55rem, 3.4vw, 3.8rem); line-height: 1.02; letter-spacing: -.05em; max-width: 20ch; }
+    .hero-copy > p:not(.eyebrow) { max-width: 54ch; margin: 24px 0 30px; color: var(--muted); font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
+    .primary-link, .primary-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px; border: 1px solid var(--accent); border-radius: 10px; background: var(--accent); color: var(--on-accent); text-decoration: none; font-weight: 720; cursor: pointer; white-space: nowrap; transition: transform .18s ease, filter .18s ease; }
+    .primary-link:hover, .primary-button:hover { filter: brightness(1.08); }
+    .primary-link:active, .primary-button:active { transform: scale(.985); }
+    .hero-visual { position: relative; min-height: 520px; margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); box-shadow: 0 28px 70px var(--shadow); }
+    .hero-visual img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
+    .hero-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; border: 1px solid color-mix(in srgb, var(--ink) 15%, transparent); border-radius: inherit; }
+    .section { padding-block: clamp(72px, 9vw, 118px); border-top: 1px solid var(--line); }
+    .section-head { max-width: 760px; margin-bottom: 36px; }
+    h2 { margin: 0; font-size: clamp(2.15rem, 4.3vw, 4.15rem); line-height: 1.02; letter-spacing: -.045em; }
+    .section-head p { margin: 18px 0 0; color: var(--muted); max-width: 65ch; }
+    h3 { margin: 0; font-size: 1.2rem; line-height: 1.2; letter-spacing: -.02em; }
+    .assistant-shell { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: 24px; align-items: start; }
+    .assistant-panel, .context-panel { border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-2); }
+    .assistant-panel { min-height: 500px; padding: clamp(22px, 4vw, 42px); display: flex; flex-direction: column; }
+    .context-panel { padding: 26px; }
+    .context-panel p, .context-panel li { color: var(--muted); }
+    .context-panel ul { margin: 18px 0 0; padding-left: 20px; }
+    .context-panel li + li { margin-top: 10px; }
+    .progress-copy { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .92rem; margin-bottom: 26px; }
+    .question { min-height: 330px; display: flex; flex-direction: column; }
+    .question h3 { font-size: clamp(1.55rem, 3vw, 2.35rem); max-width: 22ch; }
+    .question-helper { margin: 12px 0 24px; color: var(--muted); max-width: 62ch; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: auto; }
+    .option { min-height: 72px; text-align: left; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: var(--surface); color: var(--ink); cursor: pointer; transition: border-color .18s ease, transform .18s ease, background .18s ease; }
+    .option:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .option:active { transform: scale(.985); }
+    .option[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+    .option strong { display: block; }
+    .option small { display: block; margin-top: 4px; color: var(--muted); }
+    .dialog-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .secondary-button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 9px; background: transparent; color: var(--ink); cursor: pointer; }
+    .secondary-button:hover { border-color: var(--accent); }
+    .secondary-button:active { transform: scale(.985); }
+    .secondary-button:disabled { opacity: .45; cursor: not-allowed; }
+    .inline-error { margin: 14px 0 0; padding: 12px 14px; border-left: 4px solid var(--accent); background: var(--accent-soft); }
+    .skeleton { display: grid; gap: 14px; min-height: 330px; align-content: center; }
+    .skeleton span { display: block; height: 18px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 10%, transparent); }
+    .skeleton span:nth-child(1) { width: 64%; height: 34px; }
+    .skeleton span:nth-child(2) { width: 82%; }
+    .skeleton span:nth-child(3) { width: 46%; }
+    .application-empty { border: 1px dashed var(--line); border-radius: var(--radius); padding: clamp(28px, 5vw, 56px); color: var(--muted); }
+    .application-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 34px; }
+    .qualification { padding: 28px; border-radius: var(--radius); background: var(--accent-soft); }
+    .qualification-label { margin: 0 0 8px; color: var(--muted); }
+    .qualification strong { font-size: clamp(2rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -.05em; }
+    .qualification p:last-child { margin-bottom: 0; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; margin: 0; }
+    .field-grid div { min-width: 0; }
+    .field-grid dt { color: var(--muted); font-size: .88rem; }
+    .field-grid dd { margin: 5px 0 0; font-weight: 680; overflow-wrap: anywhere; }
+    .crm-block { margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .crm-block h3 { margin-bottom: 20px; }
+    .crm-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .crm-cell { min-height: 110px; padding: 16px; border-radius: 10px; background: var(--surface-2); }
+    .crm-cell span { display: block; color: var(--muted); font-size: .82rem; }
+    .crm-cell strong { display: block; margin-top: 8px; overflow-wrap: anywhere; }
+    .road-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+    .road-tab { min-height: 46px; padding: 10px 14px; white-space: nowrap; border: 1px solid var(--line); border-radius: 9px; background: transparent; color: var(--muted); cursor: pointer; }
+    .road-tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+    .road-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 24px; padding: clamp(24px, 4vw, 40px); border-radius: var(--radius); background: var(--surface-2); }
+    .road-panel p { margin: 10px 0 0; color: var(--muted); }
+    .synthetic-note { padding: 14px 16px; border-left: 4px solid var(--accent); background: var(--accent-soft); margin-bottom: 26px; }
+    .metric-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; margin: 0; }
+    .metric { grid-column: span 4; min-height: 150px; padding: 22px; border-radius: var(--radius); border: 1px solid var(--line); }
+    .metric:nth-child(4), .metric:nth-child(5) { grid-column: span 6; }
+    .metric:nth-child(6) { grid-column: span 12; }
+    .metric dt { color: var(--muted); }
+    .metric dd { margin: 12px 0 0; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; font-weight: 780; letter-spacing: -.04em; }
+    .dashboard-lower { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: 28px; margin-top: 30px; }
+    .bar-chart, .insights { padding: 26px; border-radius: var(--radius); background: var(--surface-2); }
+    .bars { height: 230px; display: flex; align-items: end; gap: 12px; margin-top: 28px; }
+    .bar-item { flex: 1; min-width: 0; display: grid; gap: 8px; align-content: end; height: 100%; }
+    .bar { min-height: 8px; border-radius: 8px 8px 3px 3px; background: var(--accent); }
+    .bar-item strong, .bar-item span { overflow-wrap: anywhere; }
+    .bar-item span { color: var(--muted); font-size: .82rem; }
+    .insight { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .insight:first-of-type { border-top: 0; padding-top: 0; }
+    .insight p { margin: 0; }
+    .insight small { display: block; margin-top: 8px; color: var(--muted); }
+    .savings-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .8fr); gap: 34px; align-items: start; }
+    .controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 26px; }
+    .control label { display: flex; justify-content: space-between; gap: 16px; font-weight: 670; }
+    .control output { color: var(--accent); white-space: nowrap; }
+    .control input[type="range"] { width: 100%; min-height: 44px; margin-top: 8px; accent-color: var(--accent); cursor: pointer; }
+    .control small { display: block; color: var(--muted); }
+    .savings-output { position: sticky; top: calc(var(--nav-h) + 22px); padding: 28px; border-radius: var(--radius); background: var(--accent-soft); }
+    .saving-main { margin: 18px 0 4px; font-size: clamp(2.5rem, 6vw, 5.3rem); line-height: .9; font-weight: 790; letter-spacing: -.06em; }
+    .saving-list { margin: 26px 0 0; display: grid; gap: 16px; }
+    .saving-list div { display: flex; justify-content: space-between; gap: 20px; }
+    .saving-list dt { color: var(--muted); }
+    .saving-list dd { margin: 0; text-align: right; font-weight: 700; }
+    .formula { margin: 28px 0 0; color: var(--muted); font-size: .9rem; }
+    .legal-note { margin-top: 24px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: .92rem; }
+    .feature-map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; border-top: 1px solid var(--line); }
+    .feature { min-height: 92px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); }
+    .feature strong { color: var(--accent); font-size: 1.3rem; min-width: 28px; }
+    .feature span { font-weight: 650; }
+    .contact-section { background: var(--surface-2); }
+    .contact-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr); gap: 42px; align-items: end; }
+    .contact-layout p { color: var(--muted); max-width: 62ch; }
+    .contact-actions { display: grid; gap: 12px; justify-items: start; }
+    .contact-actions a:not(.primary-link) { min-height: 44px; display: inline-flex; align-items: center; color: var(--accent); font-weight: 680; }
+    .external-note { font-size: .88rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--line); padding: 34px 20px 44px; color: var(--muted); font-size: .9rem; }
+    footer p { max-width: var(--max); margin: 0 auto; }
+    footer p + p { margin-top: 10px; }
+    .reveal-on-view { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+      .reveal-on-view { opacity: 0; transform: translateY(18px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+      .reveal-on-view.is-visible { opacity: 1; transform: none; }
+      .skeleton span { animation: pulse 1s ease-in-out infinite alternate; }
+      @keyframes pulse { to { opacity: .45; } }
+    }
+    @media (max-width: 1020px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-copy { max-width: 760px; }
+      .hero-visual, .hero-visual img { min-height: 420px; }
+      .assistant-shell, .application-grid, .savings-layout, .contact-layout { grid-template-columns: 1fr; }
+      .context-panel { order: -1; }
+      .crm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .savings-output { position: static; }
+    }
+    @media (max-width: 767px) {
+      .demo-notice { padding-inline: 14px; text-align: left; }
+      .nav-inner { padding-inline: 16px; gap: 12px; }
+      .brand { font-size: .92rem; }
+      .nav-links { margin-left: 0; }
+      .wrap { width: min(calc(100% - 32px), var(--max)); }
+      .hero { padding-block: 44px 58px; gap: 28px; }
+      h1 { font-size: clamp(2.55rem, 12vw, 4.1rem); }
+      .hero-visual, .hero-visual img { min-height: 320px; }
+      .section { padding-block: 68px; }
+      .assistant-panel { padding: 20px; min-height: 530px; }
+      .option-grid, .field-grid, .controls, .feature-map { grid-template-columns: 1fr; }
+      .option { min-height: 62px; }
+      .crm-grid { grid-template-columns: 1fr; }
+      .road-panel { grid-template-columns: 1fr; }
+      .metric { grid-column: span 12 !important; min-height: 120px; }
+      .dashboard-lower { grid-template-columns: 1fr; }
+      .bars { height: 200px; gap: 8px; }
+      .bar-item span { font-size: .74rem; }
+      .saving-list div { display: block; }
+      .saving-list dd { text-align: left; margin-top: 4px; }
+      .contact-actions { justify-items: stretch; }
+      .contact-actions .primary-link { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+  <aside class="demo-notice" aria-label="Предупреждение о демонстрации">
+    <p><strong>Персональная демонстрационная концепция от Zephyro AI.</strong> Не является официальным сайтом компании и не создана по ее заказу.</p>
+    <p>Страница не требует авторизации, не запрашивает пароль, оплату или банковские данные и не предлагает скачивать файлы.</p>
+    <p>Введенные тестовые сведения обрабатываются только внутри браузера, не передаются и не сохраняются.</p>
+  </aside>
+  <nav class="site-nav" aria-label="Разделы демонстрации">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Zephyro AI</a>
+      <div class="nav-links">
+        <a href="#assistant">Демонстрация</a><a href="#application">Заявка</a><a href="#automation">Автоматизация</a><a href="#statistics">Статистика</a><a href="#savings">Экономия</a><a href="#full">Полная версия</a>
+      </div>
+    </div>
+  </nav>
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-copy reveal-on-view">
+        <p class="eyebrow">Персональная концепция для Кубань-Навес</p>
+        <h1>Конструкция до первого звонка</h1>
+        <p>Конфигуратор уточняет тип изделия, размеры, покрытие и монтаж, затем готовит карточку обращения.</p>
+        <a class="primary-link" href="#assistant">Пройти демонстрацию</a>
+      </div>
+      <figure class="hero-visual reveal-on-view">
+        <img src="./assets/hero.png" width="1536" height="1024" alt="Абстрактная архитектурная композиция с металлическими балками и светопрозрачной кровлей" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="section" id="assistant">
+      <div class="wrap reveal-on-view">
+        <header class="section-head"><h2>Конфигуратор металлоконструкции</h2><p>Ветка вопросов меняется для навеса, ворот, ангара или кованого изделия. Стоимость продукции не рассчитывается.</p></header>
+        <div class="assistant-shell">
+          <div class="assistant-panel" aria-live="polite">
+            <div class="progress-copy"><span id="progressText">Подготовка сценария</span><span>Демонстрационный ИИ-консультант</span></div>
+            <div id="questionStage"></div>
+            <p class="inline-error" id="assistantError" hidden>Сценарий не удалось обновить. Нажмите «Начать заново» и повторите выбор.</p>
+            <div class="dialog-actions"><button class="secondary-button" id="backButton" type="button">Назад</button><button class="secondary-button" id="resetButton" type="button">Начать заново</button></div>
+          </div>
+          <aside class="context-panel">
+            <h3>Как пользоваться</h3>
+            <ul>
+              <li>Выбирайте только тестовые варианты.</li>
+              <li>Не вводите имя, телефон, email, точный адрес или другую личную информацию.</li>
+              <li>Проект или фотографию можно будет приложить в полной версии после отдельного согласования.</li>
+              <li>Результат показывает возможную структуру заявки, а не реальный расчет.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="application">
+      <div class="wrap reveal-on-view">
+        <header class="section-head"><h2>Карточка для менеджера</h2><p>Результат собирается из тестовых ответов и показывает, как обращение могло бы выглядеть в рабочей системе.</p></header>
+        <div id="applicationContent" class="application-empty">Пройдите демонстрационный диалог. Здесь появится структурированная карточка заявки и CRM-представление.</div>
+      </div>
+    </section>
+
+    <section class="section" id="automation">
+      <div class="wrap reveal-on-view">
+        <header class="section-head"><h2>Что происходит после обращения</h2><p>Выберите этап, чтобы увидеть действие ИИ, результат для сотрудника и возможную экономию времени.</p></header>
+        <div class="road-tabs" id="roadTabs" role="tablist" aria-label="Этапы автоматической обработки"></div>
+        <div class="road-panel" id="roadPanel" role="tabpanel" tabindex="0"></div>
+      </div>
+    </section>
+
+    <section class="section" id="statistics">
+      <div class="wrap reveal-on-view">
+        <header class="section-head"><h2>Панель руководителя</h2><p>Пример того, как единая структура обращений может превращаться в управленческую картину.</p></header>
+        <p class="synthetic-note"><strong>Ниже приведены искусственные демонстрационные данные.</strong> Они не отражают фактические показатели компании.</p>
+        <dl class="metric-grid" id="metricGrid"></dl>
+        <div class="dashboard-lower">
+          <div class="bar-chart"><h3>Распределение по категориям</h3><div class="bars" id="barChart" role="img"></div></div>
+          <aside class="insights"><h3>Примеры AI-инсайтов</h3><div id="insightList"></div></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="savings">
+      <div class="wrap reveal-on-view">
+        <header class="section-head"><h2>Где может возникать экономия</h2><p>Измените предположения. Модель показывает только порядок величин и не использует показатели компании.</p></header>
+        <div class="savings-layout">
+          <div class="controls" id="savingControls"></div>
+          <aside class="savings-output" aria-live="polite">
+            <h3>Потенциально высвобождаемое время</h3>
+            <p class="saving-main"><span id="freedHours">0</span> ч</p>
+            <p>в месяц при выбранных предположениях</p>
+            <dl class="saving-list">
+              <div><dt>Повторяющиеся операции</dt><dd id="repeatHours">0 ч</dd></div>
+              <div><dt>Ручная первичная обработка</dt><dd id="manualCost">0 ₽</dd></div>
+              <div><dt>Возможное снижение административной нагрузки</dt><dd id="adminShare">0%</dd></div>
+              <div><dt>Обращения под контролем follow-up</dt><dd id="followCount">0</dd></div>
+            </dl>
+            <p class="formula">Формула: обращения × минуты обработки × доля повторяющихся вопросов × модельный коэффициент автоматизации 65%. Стоимость ручной обработки считается отдельно по выбранной стоимости часа.</p>
+          </aside>
+        </div>
+        <p class="legal-note">Иллюстративная модель на основе выбранных предположений. Не является гарантией экономии, финансовым прогнозом или коммерческим предложением. Точный эффект определяется только после анализа фактического процесса.</p>
+      </div>
+    </section>
+
+    <section class="section" id="full">
+      <div class="wrap reveal-on-view">
+        <header class="section-head"><h2>В полной версии</h2><p>Возможные функции подключаются после анализа текущих процессов, каналов и правил обработки данных.</p></header>
+        <div class="feature-map" id="featureMap"></div>
+        <p class="legal-note">Все показатели, расчеты, оценки и статистика являются демонстрационными примерами. Они не отражают фактические показатели компании, не гарантируют результат и не являются публичной офертой.</p>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="wrap contact-layout reveal-on-view">
+        <div><h2>Обсудить, как такой сценарий может работать с вашими реальными процессами</h2><p>Zephyro AI сначала изучит текущий путь обращения и только затем предложит состав полной версии.</p></div>
+        <div class="contact-actions">
+          <a class="primary-link" href="mailto:zephyro.aiagency@gmail.com" rel="noopener noreferrer nofollow">Написать в Zephyro AI</a>
+          <a href="https://t.me/Antonaspect" target="_blank" rel="noopener noreferrer nofollow">Telegram @Antonaspect</a>
+          <a href="tel:+79066970213" rel="noopener noreferrer nofollow">+7 906 697-02-13</a>
+          <span class="external-note">Переход откроет выбранный внешний канал связи.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Персональная демонстрационная концепция Zephyro AI. Не является официальным сайтом компании, рекламой от ее имени или подтверждением сотрудничества. Название компании используется исключительно для обозначения адресата концепции.</p>
+    <p>Для запуска реальной версии с передачей заявок, CRM и мессенджерами отдельно проектируются правила обработки и защиты данных.</p>
+  </footer>
+  <script id="scenarioData" type="application/json">{"id":"client-005","slug":"kuban-naves-knjp8k","company":"Кубань-Навес","sourceUrl":"https://www.kuban-naves.ru/","region":"Краснодарский край","image":"exec-9433d887-c731-43c4-a5c0-9ddfb29c62e1.png","imageAlt":"Абстрактная архитектурная композиция с металлическими балками и светопрозрачной кровлей","heroTitle":"Конструкция до первого звонка","heroText":"Конфигуратор уточняет тип изделия, размеры, покрытие и монтаж, затем готовит карточку обращения.","scenarioName":"Конфигуратор металлоконструкции","scenarioIntro":"Ветка вопросов меняется для навеса, ворот, ангара или кованого изделия. Стоимость продукции не рассчитывается.","accent":"#24563f","accentSoft":"#c9ded2","accentDark":"#83c6a2","surface":"#f1f4f0","surface2":"#dfe7e0","ink":"#17211c","muted":"#526158","darkSurface":"#111914","darkSurface2":"#1c2821","darkInk":"#edf3ef","darkMuted":"#b7c6bc","department":"Отдел металлоконструкций","completeAction":"Передать карточку специалисту по выбранному типу конструкции","summaryLead":"Запрос на изготовление и монтаж металлоконструкции","facts":["Официальный сайт перечисляет навесы, ангары, заборы и ворота, кровельные работы, жестяные и кованые изделия.","Компания указывает работу по Краснодарскому краю, изготовление по типовым и индивидуальным проектам, доставку и монтаж.","На сайте есть форма заявки с именем, телефоном и сообщением; в демо эти данные не запрашиваются."],"hypothesis":"Такой сценарий может быть полезен, когда разные виды конструкций требуют разных исходных параметров до разговора со специалистом.","doNotUse":"Не использовать неподтвержденные данные о количестве обращений, составе бригад, фактических сроках ответа, CRM и потерях.","questions":[{"id":"product","prompt":"Что требуется изготовить?","helper":"От выбора зависит следующая ветка вопросов.","options":[{"value":"canopy","label":"Навес или козырек","detail":""},{"value":"gates","label":"Забор или ворота","detail":""},{"value":"hangar","label":"Ангар или павильон","detail":""},{"value":"forged","label":"Кованое изделие","detail":""}]},{"id":"clientType","prompt":"Для какого типа объекта?","helper":"Выберите ближайший вариант.","options":[{"value":"private","label":"Частный дом или участок","detail":""},{"value":"business","label":"Коммерческий объект","detail":""},{"value":"contractor","label":"Строительный подряд","detail":""}]},{"id":"region","prompt":"Где планируется объект?","helper":"Точный адрес вводить не нужно.","options":[{"value":"krasnodar","label":"Краснодар","detail":""},{"value":"kray","label":"Краснодарский край","detail":""},{"value":"other","label":"Другой регион","detail":""},{"value":"unknown","label":"Регион требует уточнения","detail":""}]},{"id":"dimensions","prompt":"Что известно о размерах?","helper":"Фото или проект можно будет приложить только в полной версии.","options":[{"value":"exact","label":"Есть точные размеры","detail":""},{"value":"rough","label":"Есть ориентировочные размеры","detail":""},{"value":"measurement","label":"Нужен замер","detail":""},{"value":"unknown","label":"Размеров пока нет","detail":""}]},{"id":"roof","prompt":"Какой вариант заполнения рассматривается?","helper":"Вопрос для навесов и ангаров.","options":[{"value":"poly","label":"Светопрозрачный материал","detail":""},{"value":"metal","label":"Металлическая кровля","detail":""},{"value":"mixed","label":"Комбинированный вариант","detail":""},{"value":"unknown","label":"Нужен подбор","detail":""}],"showIf":{"product":["canopy","hangar"]}},{"id":"opening","prompt":"Как будет использоваться проем?","helper":"Вопрос для ворот и ограждений.","options":[{"value":"sliding","label":"Откатная конструкция","detail":""},{"value":"swing","label":"Распашная конструкция","detail":""},{"value":"fence","label":"Только ограждение","detail":""},{"value":"unknown","label":"Нужна рекомендация","detail":""}],"showIf":{"product":["gates"]}},{"id":"forging","prompt":"Какой характер изделия ближе?","helper":"Вопрос для кованых изделий.","options":[{"value":"functional","label":"Функциональное изделие","detail":""},{"value":"decor","label":"Декоративный акцент","detail":""},{"value":"set","label":"Комплект элементов","detail":""},{"value":"unknown","label":"Нужна консультация","detail":""}],"showIf":{"product":["forged"]}},{"id":"coating","prompt":"Что важно по защите и внешнему виду?","helper":"Финальный материал выбирается после технической проверки.","options":[{"value":"powder","label":"Порошковое покрытие","detail":""},{"value":"weather","label":"Повышенная защита от погоды","detail":""},{"value":"standard","label":"Базовое решение","detail":""},{"value":"unknown","label":"Нужна рекомендация","detail":""}]},{"id":"timing","prompt":"Когда требуется следующий шаг?","helper":"Это не обещание срока производства.","options":[{"value":"month","label":"В течение месяца","detail":""},{"value":"quarter","label":"В течение 1-3 месяцев","detail":""},{"value":"later","label":"Позже","detail":""},{"value":"unknown","label":"Срок не определен","detail":""}]},{"id":"installation","prompt":"Какой объем работ нужен?","helper":"Можно отделить изготовление от монтажа.","options":[{"value":"full","label":"Проектирование, изготовление и монтаж","detail":""},{"value":"install","label":"Изготовление и монтаж","detail":""},{"value":"production","label":"Только изготовление","detail":""},{"value":"unknown","label":"Нужно уточнить","detail":""}]}],"summaryFields":[["Категория","product"],["Тип объекта","clientType"],["Регион","region"],["Размеры","dimensions"],["Конфигурация",["roof","opening","forging"]],["Покрытие","coating"],["Срок","timing"],["Объем работ","installation"]],"required":["product","clientType","region","dimensions","coating","timing","installation"],"unknownValues":["unknown"],"hotTimings":["month"],"roadmap":[{"name":"Получение обращения","ai":"Фиксирует выбранный тип конструкции.","staff":"Получает карточку вместо свободного сообщения.","saving":"Меньше ручного разбора первичного запроса."},{"name":"Выбор направления","ai":"Разделяет навесы, ворота, ангары и ковку.","staff":"Заявка попадает профильному специалисту.","saving":"Меньше ручной маршрутизации."},{"name":"Сбор параметров","ai":"Уточняет размеры, материал, защиту и объем работ.","staff":"Видит ключевые исходные данные.","saving":"Меньше повторяющихся вопросов."},{"name":"Проверка полноты","ai":"Помечает отсутствующие размеры и неопределенные решения.","staff":"Понимает, что спросить первым.","saving":"Меньше неполных обращений."},{"name":"Квалификация","ai":"Формирует демонстрационный статус с объяснением.","staff":"Видит условный приоритет и причину.","saving":"Проще выбрать порядок обратной связи."},{"name":"Создание задачи","ai":"Готовит черновик CRM-карточки и следующую задачу.","staff":"Получает готовую структуру.","saving":"Меньше ручного переноса."},{"name":"Контроль продолжения","ai":"Напоминает об уточнениях и повторных касаниях.","staff":"Руководитель видит искусственную сводку.","saving":"Меньше забытых follow-up."}],"metrics":[["Обращения за период","58"],["Новые","14"],["Требуют ответа","7"],["Среднее время первого ответа","19 мин"],["Готовы к уточнению","21"],["Повторные касания","12"]],"chart":[["Навесы",23],["Ворота",14],["Ангары",8],["Кованые изделия",13]],"insights":["Запросы на монтаж чаще требуют отдельного уточнения региона и готовности площадки.","Для навесов размеры и вариант кровли можно собирать до подключения специалиста."],"savings":{"inquiries":95,"minutes":20,"repeat":62,"hourCost":750,"follow":38,"managers":5},"fullFeatures":["Отдельные ветки по видам конструкций","Проверка размеров и готовности исходных данных","Распределение по категории и региону","Черновик запроса на расчет","Задача профильному специалисту","Контроль условного SLA","Повторное уточнение неполных обращений","Сводка по спросу и монтажу"],"contact":{"email":"zephyro.aiagency@gmail.com","phone":"+79066970213","phoneLabel":"+7 906 697-02-13","telegram":"@Antonaspect","telegramUrl":"https://t.me/Antonaspect"}}</script>
+  <script>
+    (() => {
+      'use strict';
+      const scenario = JSON.parse(document.getElementById('scenarioData').textContent);
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const answers = {};
+      let cursor = 0;
+      let completed = false;
+      let transitionLock = false;
+      const stage = document.getElementById('questionStage');
+      const progressText = document.getElementById('progressText');
+      const backButton = document.getElementById('backButton');
+      const resetButton = document.getElementById('resetButton');
+      const assistantError = document.getElementById('assistantError');
+
+      const visibleQuestions = () => scenario.questions.filter((question) => {
+        if (!question.showIf) return true;
+        return Object.entries(question.showIf).every(([field, allowed]) => answers[field] && allowed.includes(answers[field].value));
+      });
+
+      const answerText = (field) => {
+        const ids = Array.isArray(field) ? field : [field];
+        const item = ids.map((id) => answers[id]).find(Boolean);
+        return item ? item.label : 'Требует уточнения';
+      };
+
+      const pruneHiddenAnswers = () => {
+        const visibleIds = new Set(visibleQuestions().map((question) => question.id));
+        Object.keys(answers).forEach((id) => { if (!visibleIds.has(id)) delete answers[id]; });
+      };
+
+      const showSkeleton = () => {
+        stage.innerHTML = '<div class="skeleton" aria-label="Обновление сценария"><span></span><span></span><span></span></div>';
+      };
+
+      const renderQuestion = () => {
+        try {
+          assistantError.hidden = true;
+          const questions = visibleQuestions();
+          if (completed || cursor >= questions.length) {
+            completed = true;
+            renderCompletion();
+            renderApplication();
+            return;
+          }
+          const question = questions[cursor];
+          progressText.textContent = 'Вопрос ' + (cursor + 1) + ' из ' + questions.length;
+          backButton.disabled = cursor === 0;
+          const options = question.options.map((option) => {
+            const selected = answers[question.id] && answers[question.id].value === option.value;
+            return '<button class="option" type="button" data-value="' + option.value + '" aria-pressed="' + selected + '"><strong>' + option.label + '</strong>' + (option.detail ? '<small>' + option.detail + '</small>' : '') + '</button>';
+          }).join('');
+          stage.innerHTML = '<div class="question"><h3>' + question.prompt + '</h3><p class="question-helper">' + question.helper + '</p><div class="option-grid">' + options + '</div></div>';
+          stage.querySelectorAll('.option').forEach((button) => {
+            button.addEventListener('click', () => chooseAnswer(question, button));
+            button.addEventListener('keydown', (event) => {
+              if (!['Enter', ' '].includes(event.key)) return;
+              event.preventDefault();
+              button.click();
+            });
+          });
+        } catch (error) {
+          assistantError.hidden = false;
+          transitionLock = false;
+        }
+      };
+
+      const chooseAnswer = (question, button) => {
+        if (transitionLock) return;
+        transitionLock = true;
+        stage.querySelectorAll('button').forEach((item) => { item.disabled = true; });
+        const option = question.options.find((item) => item.value === button.dataset.value);
+        answers[question.id] = { value: option.value, label: option.label };
+        pruneHiddenAnswers();
+        cursor += 1;
+        showSkeleton();
+        const finish = () => { transitionLock = false; renderQuestion(); };
+        if (reducedMotion) finish(); else setTimeout(finish, 160);
+      };
+
+      const renderCompletion = () => {
+        const count = Object.keys(answers).length;
+        progressText.textContent = 'Сценарий завершен';
+        backButton.disabled = false;
+        stage.innerHTML = '<div class="question"><h3>Карточка заявки сформирована</h3><p class="question-helper">Система собрала ' + count + ' тестовых параметров. Результат доступен в следующем разделе.</p><a class="primary-link" href="#application">Посмотреть карточку</a></div>';
+      };
+
+      const qualification = () => {
+        const known = scenario.required.filter((id) => answers[id] && !scenario.unknownValues.includes(answers[id].value)).length;
+        const completeness = Math.round((known / scenario.required.length) * 100);
+        const timingField = scenario.timingField || 'timing';
+        const timing = answers[timingField] ? answers[timingField].value : '';
+        const missing = scenario.required.filter((id) => !answers[id] || scenario.unknownValues.includes(answers[id].value));
+        if (completeness >= 78 && scenario.hotTimings.includes(timing)) return { label: 'Горячая', completeness, missing, reason: 'Основные параметры выбраны, а следующий шаг обозначен как близкий.' };
+        if (completeness >= 58) return { label: 'Теплая', completeness, missing, reason: 'Контекст понятен, но перед передачей специалисту остаются уточнения.' };
+        return { label: 'Требует уточнения', completeness, missing, reason: 'Для следующего шага пока не хватает нескольких обязательных параметров.' };
+      };
+
+      const renderApplication = () => {
+        const result = qualification();
+        const missingLabels = result.missing.map((id) => {
+          const item = scenario.questions.find((question) => question.id === id);
+          return item ? item.prompt.replace(/[?]$/, '') : id;
+        });
+        const readiness = Math.min(88, 38 + Math.round(result.completeness * .5) + (result.label === 'Горячая' ? 6 : result.label === 'Теплая' ? 2 : 0));
+        const fields = scenario.summaryFields.map(([label, field]) => '<div><dt>' + label + '</dt><dd>' + answerText(field) + '</dd></div>').join('');
+        const nextTask = missingLabels.length ? 'Уточнить: ' + missingLabels.slice(0, 2).join(', ') : scenario.completeAction;
+        const note = scenario.summaryLead + '. Полнота тестовых данных: ' + result.completeness + '%.';
+        document.getElementById('applicationContent').className = '';
+        document.getElementById('applicationContent').innerHTML = '<div class="application-grid"><aside class="qualification"><p class="qualification-label">Демонстрационная оценка на основе выбранных ответов</p><strong>' + result.label + '</strong><p>' + result.reason + '</p><p><b>Полнота данных:</b> ' + result.completeness + '%</p><p><b>Недостающие сведения:</b> ' + (missingLabels.length ? missingLabels.join('; ') : 'основные поля заполнены') + '</p></aside><dl class="field-grid">' + fields + '</dl></div><div class="crm-block"><h3>Как карточка могла бы выглядеть в CRM</h3><div class="crm-grid"><div class="crm-cell"><span>Источник</span><strong>Демонстрационный сценарий на странице</strong></div><div class="crm-cell"><span>Этап</span><strong>Первичная квалификация</strong></div><div class="crm-cell"><span>Ответственный отдел</span><strong>' + scenario.department + '</strong></div><div class="crm-cell"><span>SLA первого ответа</span><strong>Демонстрационное правило: 2 рабочих часа</strong></div><div class="crm-cell"><span>Следующая задача</span><strong>' + nextTask + '</strong></div><div class="crm-cell"><span>Заметка ИИ</span><strong>' + note + '</strong></div><div class="crm-cell"><span>Демонстрационный индекс готовности</span><strong>' + readiness + ' из 100</strong></div><div class="crm-cell"><span>Приоритет</span><strong>' + result.label + ', только как пример</strong></div></div></div>';
+      };
+
+      backButton.addEventListener('click', () => {
+        if (transitionLock) return;
+        if (completed) { completed = false; cursor = Math.max(0, visibleQuestions().length - 1); renderQuestion(); return; }
+        cursor = Math.max(0, cursor - 1);
+        renderQuestion();
+      });
+
+      resetButton.addEventListener('click', () => {
+        Object.keys(answers).forEach((key) => delete answers[key]);
+        cursor = 0; completed = false; transitionLock = false;
+        document.getElementById('applicationContent').className = 'application-empty';
+        document.getElementById('applicationContent').textContent = 'Пройдите демонстрационный диалог. Здесь появится структурированная карточка заявки и CRM-представление.';
+        renderQuestion();
+        stage.focus({ preventScroll: true });
+      });
+
+      const renderRoad = (index) => {
+        const item = scenario.roadmap[index];
+        document.querySelectorAll('.road-tab').forEach((button, buttonIndex) => {
+          button.setAttribute('aria-selected', buttonIndex === index ? 'true' : 'false');
+          button.tabIndex = buttonIndex === index ? 0 : -1;
+        });
+        document.getElementById('roadPanel').innerHTML = '<div><h3>Что делает ИИ</h3><p>' + item.ai + '</p></div><div><h3>Что получает сотрудник</h3><p>' + item.staff + '</p></div><div><h3>Где возникает экономия</h3><p>' + item.saving + '</p></div>';
+      };
+
+      const roadTabs = document.getElementById('roadTabs');
+      scenario.roadmap.forEach((item, index) => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'road-tab'; button.role = 'tab'; button.textContent = item.name;
+        button.setAttribute('aria-selected', index === 0 ? 'true' : 'false'); button.tabIndex = index === 0 ? 0 : -1;
+        button.addEventListener('click', () => renderRoad(index));
+        button.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+          event.preventDefault();
+          const direction = event.key === 'ArrowRight' ? 1 : -1;
+          const next = (index + direction + scenario.roadmap.length) % scenario.roadmap.length;
+          renderRoad(next); roadTabs.children[next].focus();
+        });
+        roadTabs.appendChild(button);
+      });
+      renderRoad(0);
+
+      document.getElementById('metricGrid').innerHTML = scenario.metrics.map(([label, value]) => '<div class="metric"><dt>' + label + '</dt><dd>' + value + '</dd></div>').join('');
+      const maxBar = Math.max(...scenario.chart.map((item) => item[1]));
+      const barChart = document.getElementById('barChart');
+      barChart.setAttribute('aria-label', 'Искусственное распределение: ' + scenario.chart.map((item) => item[0] + ' ' + item[1]).join(', '));
+      barChart.innerHTML = scenario.chart.map(([label, value]) => '<div class="bar-item"><strong>' + value + '</strong><div class="bar" style="height:' + Math.max(8, Math.round((value / maxBar) * 150)) + 'px"></div><span>' + label + '</span></div>').join('');
+      document.getElementById('insightList').innerHTML = scenario.insights.map((text) => '<div class="insight"><p>' + text + '</p><small>Пример вывода на искусственных данных</small></div>').join('');
+      document.getElementById('featureMap').innerHTML = scenario.fullFeatures.map((text, index) => '<div class="feature"><strong>' + String(index + 1).padStart(2, '0') + '</strong><span>' + text + '</span></div>').join('');
+
+      const ranges = [
+        ['inquiries', 'Обращений в месяц', 20, 500, 10, 'шт.'], ['minutes', 'Минут на первичную обработку', 5, 60, 1, 'мин'],
+        ['repeat', 'Доля повторяющихся вопросов', 10, 90, 1, '%'], ['hourCost', 'Стоимость рабочего часа', 300, 3000, 50, '₽'],
+        ['follow', 'Доля обращений для повторного контакта', 5, 70, 1, '%'], ['managers', 'Количество менеджеров', 1, 20, 1, 'чел.']
+      ];
+      const savingState = { ...scenario.savings };
+      const controls = document.getElementById('savingControls');
+      ranges.forEach(([id, label, min, max, step, suffix]) => {
+        const wrapper = document.createElement('div'); wrapper.className = 'control';
+        wrapper.innerHTML = '<label for="saving-' + id + '"><span>' + label + '</span><output id="output-' + id + '">' + savingState[id] + ' ' + suffix + '</output></label><input id="saving-' + id + '" type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + savingState[id] + '" aria-describedby="saving-help-' + id + '"><small id="saving-help-' + id + '">Изменяемое демонстрационное предположение</small>';
+        const input = wrapper.querySelector('input');
+        input.addEventListener('input', () => { savingState[id] = Number(input.value); document.getElementById('output-' + id).textContent = input.value + ' ' + suffix; calculateSavings(); });
+        controls.appendChild(wrapper);
+      });
+
+      const currency = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
+      const calculateSavings = () => {
+        const totalHours = savingState.inquiries * savingState.minutes / 60;
+        const repeatHours = totalHours * savingState.repeat / 100;
+        const freed = repeatHours * .65;
+        const manualCost = totalHours * savingState.hourCost;
+        const adminShare = Math.min(100, freed / (savingState.managers * 160) * 100);
+        const followCount = savingState.inquiries * savingState.follow / 100;
+        document.getElementById('freedHours').textContent = freed.toFixed(1).replace('.', ',');
+        document.getElementById('repeatHours').textContent = repeatHours.toFixed(1).replace('.', ',') + ' ч';
+        document.getElementById('manualCost').textContent = currency.format(manualCost) + ' ₽';
+        document.getElementById('adminShare').textContent = adminShare.toFixed(1).replace('.', ',') + '%';
+        document.getElementById('followCount').textContent = Math.round(followCount);
+      };
+      calculateSavings();
+
+      const observedSections = ['assistant', 'application', 'automation', 'statistics', 'savings', 'full'];
+      const navLinks = [...document.querySelectorAll('.nav-links a')];
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio).slice(0, 1).forEach((entry) => {
+          navLinks.forEach((link) => link.setAttribute('aria-current', link.getAttribute('href') === '#' + entry.target.id ? 'true' : 'false'));
+        });
+      }, { rootMargin: '-20% 0px -60% 0px', threshold: [0, .2, .6] });
+      observedSections.forEach((id) => navObserver.observe(document.getElementById(id)));
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+      }, { threshold: .08 });
+      document.querySelectorAll('.reveal-on-view').forEach((item) => revealObserver.observe(item));
+      renderQuestion();
+    })();
+  </script>
+</body>
+</html>

@@ -53,7 +53,7 @@ escape_bre() {
 # Файлы, которые сами описывают правила и легитимно содержат слова-триггеры.
 is_allowlisted() {
   case "$1" in
-    CLAUDE.md|README.md|.gitignore) return 0 ;;
+    AGENTS.md|CLAUDE.md|README.md|.gitignore) return 0 ;;
     scripts/check-secrets.sh) return 0 ;;
     scripts/validate-project.sh) return 0 ;;
     scripts/check-published-html.sh) return 0 ;;

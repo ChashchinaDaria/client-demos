@@ -49,6 +49,7 @@ reports/screenshots/*
 # --- Client briefs, письма, гипотезы — тоже только локально ---
 clients/*
 !clients/.gitkeep
+clients-batch-02/
 outreach/*
 !outreach/.gitkeep
 
