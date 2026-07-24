@@ -51,6 +51,7 @@ clients/*
 !clients/.gitkeep
 clients-batch-02/
 clients-batch-03/
+clients-point-estate/
 outreach/*
 !outreach/.gitkeep
 
@@ -58,6 +59,7 @@ outreach/*
 # Содержат рабочий email, телефон и Telegram — только локально.
 outreach-ready/
 assets-image-plan/
+workspaces/
 
 # --- Batch 03 local drafts: publish only after user-provided images and approval ---
 docs/adexo-74rsb7/
